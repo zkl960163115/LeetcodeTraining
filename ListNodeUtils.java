@@ -1,4 +1,4 @@
-package zkl;
+package com.zkl;
 
 import java.util.Scanner;
 
@@ -7,10 +7,13 @@ import java.util.Scanner;
  */
 public class ListNodeUtils {
     public static ListNode Init(int n, Scanner scanner){
+
         if(n<=0){
             return null;
         }
         ListNode head = new ListNode();
+        //Scanner scanner = new Scanner(System.in);
+        //scanner.close();
         head.val = scanner.nextInt();
         ListNode p = head;
 
@@ -25,8 +28,29 @@ public class ListNodeUtils {
         return head;
     }
 
+    public static ListNode InitList(int[] nums){
+
+        if(nums.length<=0){
+            return null;
+        }
+        ListNode head = new ListNode();
+        head.val = nums[0];
+        ListNode p = head;
+
+        for (int i = 1; i < nums.length; i++) {
+            ListNode temp = new ListNode();
+            temp.val = nums[i];
+            p.next = temp;
+            p = temp;
+        }
+        p.next = null;
+
+        return head;
+    }
+
     public static void Print(ListNode list){
         System.out.println();
+        System.out.println("The ListNode is:");
         while(list != null){
             System.out.print(list.val + " ");
             list = list.next;
